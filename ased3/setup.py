@@ -1,3 +1,4 @@
+import numpy
 
 def configuration(parent_package='', top_path=None):
 
@@ -7,12 +8,12 @@ def configuration(parent_package='', top_path=None):
 
     config.add_extension(name='_d3',
             sources=['_d3.pyf', '_d3params.f90', '_d3.f90'],
-            libraries=['iomp5'],
-            extra_f90_compile_args=['-openmp'],
-            extra_link_args=['-openmp'])
+            extra_f90_compile_args=['-fopenmp'],
+            extra_link_args=['-fopenmp'])
 
     return config
 
 if __name__ == '__main__':
     from numpy.distutils.core import setup
+    numpy.distutils.log.set_verbosity(1)
     setup(**configuration(top_path='').todict())

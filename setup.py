@@ -1,4 +1,5 @@
 from numpy.distutils.core import Extension
+import numpy
 
 def configuration(parent_package='', top_path=None):
 
@@ -13,6 +14,7 @@ def configuration(parent_package='', top_path=None):
 if __name__ == '__main__':
     from numpy.distutils.core import setup
 
+    numpy.distutils.log.set_verbosity(1)
     setup(name='ased3',
           description='Grimme D3 dispersion calculator for ASE',
           author='Eric Hermes',
